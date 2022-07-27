@@ -406,8 +406,16 @@ arrangemon(Monitor *m)
 void
 attach(Client *c)
 {
-	c->next = c->mon->clients;
-	c->mon->clients = c;
+	if (c->mon->sel == NULL || c->mon->sel == c->mon->clients || c->mon->sel->isfloating) {
+		c->next = c->mon->clients;
+		c->mon->clients = c;
+		return;
+	}
+	
+	Client *at;
+	for (at = c->mon->clients; at->next != c->mon->sel; at = at->next);
+	c->next = c->mon->sel;
+	at->next = c;
 }
 
 void
