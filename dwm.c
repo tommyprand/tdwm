@@ -1716,7 +1716,7 @@ tile(Monitor *m)
 				ty += HEIGHT(c);
 		}
 	if (n == 1 && selmon->sel->center)
-		resizeclient(selmon->sel, selmon->mw / 6, selmon->mh / 6, selmon->mw * 0.67, selmon->mh * 0.67);
+		resizeclient(selmon->sel, selmon->mw / 8, selmon->mh / 8, selmon->mw * 0.75, selmon->mh * 0.75);
 }
 
 void
