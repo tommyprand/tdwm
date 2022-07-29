@@ -8,19 +8,36 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int barspacing					= 4;				/* px of spacing on y axis for the bar */
 static const char *fonts[]          = { "Iosevka Nerd Font:size=14:style=Bold" };
 static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char rosewater_mocha[] = "#f5e0dc";
+static const char flamingo_mocha[]  = "#f2cdcd";
+static const char pink_mocha[]      = "#f5c2e7";
+static const char mauve_mocha[]     = "#cba6f7";
+static const char red_mocha[]       = "#f38ba8";
+static const char maroon_mocha[]    = "#eba0ac";
+static const char peach_mocha[]     = "#fab387";
+static const char yellow_mocha[]    = "#f9e2af";
+static const char green_mocha[]     = "#a6e3a1";
+static const char teal_mocha[]      = "#94e2d5";
+static const char sky_mocha[]       = "#89dceb";
+static const char sapphire_mocha[]  = "#74c7ec";
+static const char blue_mocha[]      = "#89b4fa";
+static const char lavender_mocha[]  = "#b4befe";
+static const char text_mocha[]      = "#cdd6f4";
+static const char subtext_mocha[]   = "#a6adc8";
+static const char crust_mocha[]     = "#11111b";
+static const char base_mocha[]      = "#1e1e2e";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeNorm] = { subtext_mocha, base_mocha, subtext_mocha },
+	[SchemeSel]  = { text_mocha, crust_mocha, sky_mocha},
 };
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+
+/*static const char *tagscolsel[][2] = {
+	{}
+}*/
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -58,7 +75,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", base_mocha, "-nf", subtext_mocha, "-sb", crust_mocha, "-sf", text_mocha, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
