@@ -35,9 +35,17 @@ static const char *colors[][3]      = {
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
-/*static const char *tagscolsel[][2] = {
-	{}
-}*/
+static const char *tagscolsel[][2] = {
+	{ pink_mocha, crust_mocha },
+	{ mauve_mocha, crust_mocha },
+	{ red_mocha, crust_mocha },
+	{ peach_mocha, crust_mocha },
+	{ yellow_mocha, crust_mocha },
+	{ green_mocha, crust_mocha },
+	{ sapphire_mocha, crust_mocha },
+	{ blue_mocha, crust_mocha },
+	{ lavender_mocha, crust_mocha },
+};
 
 static const Rule rules[] = {
 	/* xprop(1):
