@@ -30,6 +30,16 @@ static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { subtext_mocha, base_mocha, subtext_mocha },
 	[SchemeSel]  = { text_mocha, crust_mocha, sky_mocha},
+	// colors when tag selected
+	[SchemeTag1] = { pink_mocha, crust_mocha, crust_mocha },
+	{ mauve_mocha, crust_mocha, crust_mocha },
+	{ red_mocha, crust_mocha, crust_mocha },
+	{ peach_mocha, crust_mocha, crust_mocha },
+	{ yellow_mocha, crust_mocha, crust_mocha },
+	{ green_mocha, crust_mocha, crust_mocha },
+	{ sapphire_mocha, crust_mocha, crust_mocha },
+	{ blue_mocha, crust_mocha, crust_mocha },
+	{ lavender_mocha, crust_mocha, crust_mocha },
 };
 
 /* tagging */
