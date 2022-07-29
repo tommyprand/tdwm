@@ -59,7 +59,8 @@
 
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
-enum { SchemeNorm, SchemeSel, SchemeTag1 }; /* color schemes */
+enum { SchemeNormDark  , SchemeSelDark, SchemeTag1Dark };
+enum { SchemeNormLight = 16, SchemeSelLight = 17, SchemeTag1Light = 18 };
 enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
@@ -199,6 +200,7 @@ static void resizemouse(const Arg *arg);
 static void restack(Monitor *m);
 static void run(void);
 static void scan(void);
+static void schemetoggle(const Arg *arg);
 static int sendevent(Client *c, Atom proto);
 static void sendmon(Client *c, Monitor *m);
 static void setclientstate(Client *c, long state);
@@ -268,6 +270,7 @@ static void (*handler[LASTEvent]) (XEvent *) = {
 static Atom wmatom[WMLast], netatom[NetLast];
 static int running = 1;
 static Cur *cursor[CurLast];
+static int SchemeNorm = 0, SchemeSel = 1, SchemeTag1 = 2;
 static Clr **scheme;
 static Display *dpy;
 static Drw *drw;
@@ -1445,6 +1448,14 @@ scan(void)
 		if (wins)
 			XFree(wins);
 	}
+}
+
+void
+schemetoggle(const Arg *arg)
+{
+	SchemeNorm = SchemeNorm == SchemeNormDark ? SchemeNormLight : SchemeNormDark;
+	SchemeSel= SchemeSel == SchemeSelDark ? SchemeSelLight : SchemeSelDark;
+	SchemeTag1 = SchemeTag1 == SchemeTag1Dark ? SchemeTag1Light : SchemeTag1Dark;
 }
 
 void
