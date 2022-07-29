@@ -6,8 +6,8 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int barspacing					= 4;				/* px of spacing on y axis for the bar */
-static const char *fonts[]          = { "Iosevka Nerd Font:size=14:style=Bold" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char *fonts[]          = { "Iosevka Nerd Font:size=13:style=Bold" };
+static const char dmenufont[]       = "Iosevka Nerd Font:size=13:style=Bold";
 // catppuccin mocha
 static const char rosewater_mocha[] = "#f5e0dc";
 static const char flamingo_mocha[]  = "#f2cdcd";
@@ -85,7 +85,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "dev", "web", "sys", "mus", "vid", "soc", "vir" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -94,7 +94,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating    center   monitor */
 	{ "st",       NULL,       NULL,       0,            0,            1,       -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,            1,       -1 }
+	{ "Firefox",  NULL,       NULL,       1 << 1,       0,            1,       -1 }
 };
 
 /* layout(s) */
