@@ -762,7 +762,7 @@ drawbar(Monitor *m)
 		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
 		if (occ & 1 << i)
 			drw_rect(drw, x, bh - boxs, w, boxs,
-				m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
+				1,
 				urg & 1 << i);
 		x += w;
 	}
