@@ -59,8 +59,8 @@
 
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
-enum { SchemeNormDark  , SchemeSelDark, SchemeTag1Dark };
-enum { SchemeNormLight = 16, SchemeSelLight = 17, SchemeTag1Light = 18 };
+enum { SchemeNormDark, SchemeSelDark, SchemeStatusDark, SchemeTag1Dark };
+enum { SchemeNormLight = 16, SchemeSelLight = 17, SchemeStatusLight = 18, SchemeTag1Light = 19};
 enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
@@ -270,7 +270,7 @@ static void (*handler[LASTEvent]) (XEvent *) = {
 static Atom wmatom[WMLast], netatom[NetLast];
 static int running = 1;
 static Cur *cursor[CurLast];
-static int SchemeNorm = 0, SchemeSel = 1, SchemeTag1 = 2;
+static int SchemeNorm = 0, SchemeSel = 1, SchemeStatus = 2, SchemeTag1 = 3;
 static Clr **scheme;
 static Display *dpy;
 static Drw *drw;
@@ -745,7 +745,7 @@ drawbar(Monitor *m)
 
 	/* draw status first so it can be overdrawn by tags later */
 	if (m == selmon) { /* status is only drawn on selected monitor */
-		drw_setscheme(drw, scheme[SchemeNorm]);
+		drw_setscheme(drw, scheme[SchemeStatus]);
 		tw = TEXTW(stext) - lrpad + 2; /* 2px right padding */
 		drw_text(drw, m->ww - tw, 0, tw, bh, 0, stext, 0);
 	}
@@ -1455,6 +1455,7 @@ schemetoggle(const Arg *arg)
 {
 	SchemeNorm = SchemeNorm == SchemeNormDark ? SchemeNormLight : SchemeNormDark;
 	SchemeSel= SchemeSel == SchemeSelDark ? SchemeSelLight : SchemeSelDark;
+	SchemeStatus = SchemeStatus  == SchemeStatusDark ? SchemeStatusLight : SchemeStatusDark;
 	SchemeTag1 = SchemeTag1 == SchemeTag1Dark ? SchemeTag1Light : SchemeTag1Dark;
 }
 

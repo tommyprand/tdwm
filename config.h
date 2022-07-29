@@ -51,6 +51,8 @@ static const char *colors[][3]      = {
 	// dark color scheme
 	[SchemeNormDark] = { text_mocha, base_mocha, subtext_mocha },
 	[SchemeSelDark]  = { subtext_mocha, crust_mocha, sky_mocha},
+	// status bar color scheme
+	[SchemeStatusDark] = {text_latte, sky_mocha, sky_mocha},
 	// colors when tag selected
 	[SchemeTag1Dark] = { pink_mocha, crust_mocha, crust_mocha },
 	{ mauve_mocha, crust_mocha, crust_mocha },
@@ -66,6 +68,8 @@ static const char *colors[][3]      = {
 	// light color scheme
 	[SchemeNormLight] = { text_latte, base_latte, subtext_latte },
 	[SchemeSelLight]  = { subtext_latte, crust_latte, sky_latte},
+	// status bar color scheme
+	[SchemeStatusLight] = {text_latte, sky_latte, sky_latte},
 	// colors when tag selected
 	[SchemeTag1Light] = { pink_latte, crust_latte, crust_latte },
 	{ mauve_latte, crust_latte, crust_latte },
