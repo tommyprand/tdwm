@@ -28,6 +28,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <time.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <X11/cursorfont.h>
@@ -201,7 +202,9 @@ static void resizemouse(const Arg *arg);
 static void restack(Monitor *m);
 static void run(void);
 static void scan(void);
-static void schemetoggle(const Arg *arg);
+static void togglescheme(const Arg *arg);
+static void setlight(const Arg *arg);
+static void setdark(const Arg *arg);
 static int sendevent(Client *c, Atom proto);
 static void sendmon(Client *c, Monitor *m);
 static void setclientstate(Client *c, long state);
@@ -1458,12 +1461,30 @@ scan(void)
 }
 
 void
-schemetoggle(const Arg *arg)
+togglescheme(const Arg *arg)
 {
 	SchemeNorm = SchemeNorm == SchemeNormDark ? SchemeNormLight : SchemeNormDark;
 	SchemeSel= SchemeSel == SchemeSelDark ? SchemeSelLight : SchemeSelDark;
 	SchemeStatus = SchemeStatus  == SchemeStatusDark ? SchemeStatusLight : SchemeStatusDark;
 	SchemeTag1 = SchemeTag1 == SchemeTag1Dark ? SchemeTag1Light : SchemeTag1Dark;
+}
+
+void
+setlight(const Arg *arg)
+{
+	SchemeNorm = SchemeNormLight;
+	SchemeSel = SchemeSelLight;
+	SchemeStatus = SchemeStatusLight;
+	SchemeTag1 = SchemeTag1Light;
+}
+
+void
+setdark(const Arg *arg)
+{
+	SchemeNorm = SchemeNormDark;
+	SchemeSel = SchemeSelDark;
+	SchemeStatus = SchemeStatusDark;
+	SchemeTag1 = SchemeTag1Dark;
 }
 
 void
@@ -1632,6 +1653,13 @@ setup(void)
 	scheme = ecalloc(LENGTH(colors), sizeof(Clr *));
 	for (i = 0; i < LENGTH(colors); i++)
 		scheme[i] = drw_scm_create(drw, colors[i], 3);
+	/* select proper color scheme based on time */
+	time_t sec = time(NULL);
+	struct tm *tms = localtime(&sec);
+	if (tms->tm_hour >= 6 && tms->tm_hour < 19)
+		setlight(NULL);
+	else
+		setdark(NULL);
 	/* init bars */
 	updatebars();
 	updatestatus();
