@@ -5,9 +5,9 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int barspacing					= 2;				/* px of spacing on y axis for the bar */
-static const char *fonts[]          = { "Iosevka Nerd Font:size=12:style=Bold" };
-static const char dmenufont[]       = "Iosevka Nerd Font:size=12:style=Bold";
+static const int barspacing					= 4;				/* px of spacing on y axis for the bar */
+static const char *fonts[]          = { "Iosevka Nerd Font:size=14:style=Bold" };
+static const char dmenufont[]       = "Iosevka Nerd Font:size=14:style=Bold";
 // catppuccin mocha
 static const char rosewater_mocha[] = "#f5e0dc";
 static const char flamingo_mocha[]  = "#f2cdcd";
@@ -93,7 +93,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating    center   monitor */
-	{ "st",       NULL,       NULL,       0,            0,            1,       -1 },
+	{ "St",       NULL,       NULL,       0,            0,            1,       -1 },
 	{ "Firefox",  NULL,       NULL,       0,       0,            1,       -1 }
 };
 
